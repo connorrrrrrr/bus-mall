@@ -1,12 +1,12 @@
 'use strict';
 
 
-var products = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg']
+var products = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.jpg', 'tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg']
 
 var imageContainer = document.getElementById('image-container')
-var leftProduct = document.getElementById('left-product')
-var centerProduct = document.getElementById('center-product')
-var rightProduct = document.getElementById('right-product')
+var leftImageElement = document.getElementById('left-product')
+var centerImageElement = document.getElementById('center-product')
+var rightImageElement = document.getElementById('right-product')
 var roundsOfVoting = 25;
 
 function ProductImage(name) {
@@ -61,7 +61,18 @@ function renderImages() {
     currentlyRenderedImages[2] === newImages[1].name ||
     currentlyRenderedImages[0] === newImages[2].name ||
     currentlyRenderedImages[1] === newImages[2].name ||
-    currentlyRenderedImages[2] === newImages[2].name 
+    currentlyRenderedImages[2] === newImages[2].name ||
+    currentlyRenderedImages[0] === newImages[0].name ||
+    currentlyRenderedImages[1] === newImages[0].name ||
+    currentlyRenderedImages[2] === newImages[0].name ||
+    currentlyRenderedImages[0] === newImages[1].name ||
+    currentlyRenderedImages[1] === newImages[1].name ||
+    currentlyRenderedImages[2] === newImages[1].name ||
+    currentlyRenderedImages[0] === newImages[2].name ||
+    currentlyRenderedImages[1] === newImages[2].name ||
+    currentlyRenderedImages[2] === newImages[2].name ||
+    currentlyRenderedImages[0] === newImages[0].name ||
+    currentlyRenderedImages[1] === newImages[0].name 
   ) {
     newImages = generateRandomImages();
   }
@@ -93,9 +104,25 @@ function handleImageClick(event) {
     }
   }
 renderImages();
+if (!roundsOfVoting)  {
+  imageContainer.removeEventListener('click', handleImageClick);
+  renderResults();
 }
+}
+
 renderImages();
-image.Container.addEventListener('click', handleImageClick);
+imageContainer.addEventListener('click', handleImageClick);
+
+function renderResults()  {
+  var imageInfo = document.getElementById('image-info')
+  for (var i = 0; i < ProductImage.allImages.length; i++){
+    var rowElement = document.createElement('tr');
+    var nameElement = document.createElement('td');
+    nameElement.textContent = ProductImage.allImages[i].name + ProductImage.allImages[i].timesClicked + ProductImage.allImages[i].timesShown;
+    rowElement.appendChild(nameElement);
+    imageInfo.appendChild(rowElement);
+  }
+}
 
 
 
