@@ -18,7 +18,7 @@ function ProductImage(name) {
   this.name = name.substring(0, name.length - 4);
   this.timesShown = 0;
   this.timesClicked = 0;
-  this.image = 'images/${name}';
+  this.image = `images/${name}`;
 
   ProductImage.allImages.push(this);
 
@@ -109,6 +109,7 @@ function handleImageClick(event) {
   if (!roundsOfVoting) {
     imageContainer.removeEventListener('click', handleImageClick);
     renderResults();
+    
   }
 }
 
@@ -127,39 +128,40 @@ function renderResults() {
 }
 
 
-// for (var i = 0; i < ProductImage.allImages.length; i++) {
-//   votesByProduct.push(ProductImage.allImages[i].timesClicked);
-//   timesProductsAreShown.push(ProductImage.allImages[i].timesShown);
-// }
+for (var i = 0; i < ProductImage.allImages.length; i++) {
+  votesByProduct.push(ProductImage.allImages[i].timesClicked);
+  timesProductsAreShown.push(ProductImage.allImages[i].timesShown);
+}
 
 
-// var myChart = new Chart(ctx, {
-//   type: 'bar',
-//   data: {
-//     labels: products,
-//     datasets: [{
-//       label: 'times clicked',
-//       //data: [15, 50, 3, 5, 2, 3],
-//       data: timesProductsAreShown,
-//       backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-//       borderColor: ['rgba(255, 99, 132, 1)'],
-//       borderWidth: 1
-//     },
-//     {
-//       label: 'times Shows',
-//       data: [30, 100, 3, 5, 2, 3],
-//       backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-//       borderColor: ['rgba(255, 99, 132, 1)'],
-//       borderWidth: 1
-//     }]
-//   },
-//   options: {
-//     scales: {
-//       yAxes: [{
-//         ticks: {
-//           beginAtZero: true
-//         }
-//       }]
-//     }
-//   }
-// });
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: products,
+    datasets: [{
+      label: 'times clicked',
+      //data: [15, 50, 3, 5, 2, 3],
+      data: timesProductsAreShown,
+      backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+      borderColor: ['rgba(255, 99, 132, 1)'
+    ],
+      borderWidth: 1
+    },
+    {
+      label: 'times shown',
+      data: [30, 100, 3, 5, 2, 3],
+      backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+      borderColor: ['rgba(255, 99, 132, 1)'],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
