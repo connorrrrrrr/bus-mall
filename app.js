@@ -133,6 +133,7 @@ for (var i = 0; i < ProductImage.allImages.length; i++) {
   timesProductsAreShown.push(ProductImage.allImages[i].timesShown);
 }
 
+products.saveToLocalStorage();
 
 var myChart = new Chart(ctx, {
   type: 'bar',
