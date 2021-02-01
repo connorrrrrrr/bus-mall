@@ -81,6 +81,7 @@ function renderImages() {
   ) {
     newImages = generateRandomImages();
   }
+  //This is a counter for the table to see how many times an image was shown. This data goes into a table later.
   leftImageElement.src = newImages[0].image;
   leftImageElement.name = newImages[0].name;
   newImages[0].timesShown++;
@@ -112,10 +113,10 @@ function handleImageClick(event) {
     
   }
 }
-
+//Here we display the images and add click event listeners to each element.
 renderImages();
 imageContainer.addEventListener('click', handleImageClick);
-
+//Displaying the results in a table.
 function renderResults() {
   var imageInfo = document.getElementById('image-info')
   for (var i = 0; i < ProductImage.allImages.length; i++) {
@@ -142,7 +143,8 @@ var myChart = new Chart(ctx, {
       label: 'times clicked',
       //data: [15, 50, 3, 5, 2, 3],
       data: timesProductsAreShown,
-      backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+      backgroundColor: ['rgba(255, 99, 132, 0.2)'
+    ],
       borderColor: ['rgba(255, 99, 132, 1)'
     ],
       borderWidth: 1
