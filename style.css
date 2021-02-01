@@ -1,26 +1,43 @@
 #left-product {
-  size: 200, 200, 200;
+  width: 400px;
+  height: 400px;
   display: inline;
-  position: absolute;
   top: 0px;
   left: 0px;
+  border-style: dotted;
+  border-color:rgb(7, 7, 85)
 }
 
 #center-product {
-  size: 200, 200, 200;
-  position: absolute;
+  width: 400px;
+  height: 400px;
   top: 100px;
-
+  border-style: dotted;
+  border-color:rgb(7, 7, 85)
 }
 
 #right-product {
-  size: 200, 200, 200;
+  width: 400px;
+  height: 400px;
   display: inline;
+  border-style: dotted;
+  border-color:rgb(7, 7, 85)
 
 }
 
 body {
-  color: blue;
-  background-color: aquamarine;
+  color: rgb(7, 7, 85);
+  background-color: rgb(22, 170, 121);
   size: 1000px;
+}
+
+canvas {
+  color:rgb(0, 0, 248);
+  background-color: rgb(29, 29, 29);
+  size: 600, 600;
+}
+
+#image-info {
+  color: rgb(7, 7, 85);
+  font-family: Arial, Helvetica, sans-serif;
 }
